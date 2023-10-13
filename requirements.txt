@@ -1,13 +1,13 @@
-fastapi~=0.95.0
+fastapi==0.103.2
 fastapi-sqlalchemy
 slowapi==0.1.8
 uvicorn
-pytest~=7.2.2
+pytest==7.4.2
 pytest-asyncio
-starlette~=0.26.1
+starlette>=0.27.0
 flake8
 requests
 httpx
 SQLAlchemy~=2.0.7
 pydantic~=1.10.7
-asyncpg==0.27.0
+asyncpg==0.28.0

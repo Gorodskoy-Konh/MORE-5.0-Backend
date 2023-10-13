@@ -2,8 +2,7 @@ from fastapi import APIRouter
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 
-from app.api.endpoints import couriers, orders
-
+from app.api.endpoints import couriers
 
 def get_limiter() -> Limiter:
     """Returns a limiter that limits requests to 10 per second per remote address.
@@ -20,5 +19,4 @@ def get_router() -> APIRouter:
     """
     router = APIRouter()
     router.include_router(couriers.router)
-    router.include_router(orders.router)
     return router
