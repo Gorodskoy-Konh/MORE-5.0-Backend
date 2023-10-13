@@ -34,4 +34,4 @@ class Office(BaseModel):
     workingHours: [WorkingHours]
 
     latidude: float
-    longtitude: float
+    longitude: float

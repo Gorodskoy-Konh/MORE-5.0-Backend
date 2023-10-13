@@ -9,6 +9,6 @@ class ATM(BaseModel):
     allDay: bool
 
     latitude: float
-    longtitude: float
+    longitude: float
 
     services: [Tuple[str, bool]]
