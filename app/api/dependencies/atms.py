@@ -3,7 +3,8 @@ from fastapi import Depends
 from app.api.dependencies.database import get_repository
 from app.database.error import BadRequestError
 from app.database.repositories.offices import ATMsRepository
-from app.schemas.models.atm import ATMDto, GetATMsDto
+from app.schemas.models.atm import ATMDto
+from app.schemas.requests.atms import GetATMsDto
 
 
 async def get_atms_dependency(
