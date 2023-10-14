@@ -1,5 +1,4 @@
 from fastapi import Depends
-from fastapi.exceptions import RequestValidationError
 
 from app.api.dependencies.database import get_repository
 from app.database.error import BadRequestError
