@@ -3,7 +3,7 @@ from sqlalchemy.dialects.postgresql import BIGINT, TEXT, BOOLEAN, DOUBLE_PRECISI
 from sqlalchemy.orm import relationship
 
 from app.database.base import Base
-from app.database.models.atm_service import ATMConditionDB
+from app.database.models.atm_condition import ATMConditionDB
 
 
 class ATMDB(Base):
@@ -13,4 +13,4 @@ class ATMDB(Base):
     latitude = Column("latitude", DOUBLE_PRECISION)
     longitude = Column("longitude", DOUBLE_PRECISION)
     all_day = Column("all_day", BOOLEAN)
-    conditions = relationship('ConditionDB', secondary=ATMConditionDB, backref='atms')
+    # conditions = relationship('ConditionDB', secondary=ATMConditionDB, backref='atms')

@@ -14,6 +14,15 @@ from sqlalchemy.ext.asyncio import (
 )
 
 from app.database.base import Base
+from app.database.models.condition import ConditionDB
+from app.database.models.atm_condition import ATMConditionDB
+from app.database.models.atm import ATMDB
+from app.database.models.queue import QueueDB
+from app.database.models.working_hours import WorkingHoursDB
+from app.database.models.terminal import TerminalDB
+from app.database.models.terminal_product import TerminalProductDB
+from app.database.models.office import OfficeDB
+from app.database.models.product import ProductDB
 
 
 class DatabaseEngine:

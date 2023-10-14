@@ -10,10 +10,10 @@ from app.core.events import create_shutdown_handler, create_startup_handler
 from app.core.exceptions import (
     create_not_found_handler,
     create_request_db_conflict_handler,
-    create_validation_exception_handler,
+    create_validation_exception_handler, invalid_request_parameters_handler,
 )
 from app.database import db_engine
-from app.database.error import ConflictWithRequestDBError, NotFoundInDBError
+from app.database.error import ConflictWithRequestDBError, NotFoundInDBError, BadRequestError
 
 
 def get_application() -> FastAPI:
@@ -39,6 +39,11 @@ def get_application() -> FastAPI:
     application.add_exception_handler(
         exc_class_or_status_code=NotFoundInDBError,
         handler=create_not_found_handler(),
+    )
+
+    application.add_exception_handler(
+        exc_class_or_status_code=BadRequestError,
+        handler=invalid_request_parameters_handler(),
     )
 
     application.add_exception_handler(

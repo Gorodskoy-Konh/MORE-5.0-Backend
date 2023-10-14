@@ -5,7 +5,7 @@ from starlette import status
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-from app.database.error import ConflictWithRequestDBError, NotFoundInDBError
+from app.database.error import ConflictWithRequestDBError, NotFoundInDBError, BadRequestError
 
 
 def create_validation_exception_handler() -> Callable:
@@ -22,7 +22,7 @@ def create_validation_exception_handler() -> Callable:
 
 def create_not_found_handler() -> Callable:
     async def not_found_handler(
-        _: Request, exc: NotFoundInDBError
+            _: Request, exc: NotFoundInDBError
     ) -> JSONResponse:
         return JSONResponse(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -32,9 +32,21 @@ def create_not_found_handler() -> Callable:
     return not_found_handler
 
 
+def invalid_request_parameters_handler() -> Callable:
+    async def bad_request_handler(
+            _: Request, exc: BadRequestError
+    ) -> JSONResponse:
+        return JSONResponse(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            content={"detail": exc.message},
+        )
+
+    return bad_request_handler
+
+
 def create_request_db_conflict_handler() -> Callable:
     async def not_found_handler(
-        _: Request, exc: ConflictWithRequestDBError
+            _: Request, exc: ConflictWithRequestDBError
     ) -> JSONResponse:
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,

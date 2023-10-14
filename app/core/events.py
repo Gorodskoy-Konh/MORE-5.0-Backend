@@ -6,7 +6,6 @@ from app.database import DatabaseEngine
 def create_startup_handler(db_engine: DatabaseEngine) -> Callable:
     async def startup() -> None:
         await db_engine.start()
-
     return startup
 
 
