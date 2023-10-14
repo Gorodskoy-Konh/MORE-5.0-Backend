@@ -60,19 +60,19 @@ for office in offices:
     for day in office['openHoursIndividual']:
         if not day['hours'] or day['hours'].lower() == 'выходной':
             continue
-        weekDays = WeekDays.monday
+        weekDays = WeekDays.MON
         if day['days'].lower() == 'вт':
-            weekDays = WeekDays.tuesday
+            weekDays = WeekDays.THU
         elif day['days'].lower() == 'ср':
-            weekDays = WeekDays.wednesday
+            weekDays = WeekDays.WED
         elif day['days'].lower() == 'чт':
-            weekDays = WeekDays.thursday
+            weekDays = WeekDays.THU
         elif day['days'].lower() == 'пт':
-            weekDays = WeekDays.friday
+            weekDays = WeekDays.FRI
         elif day['days'].lower() == 'сб':
-            weekDays = WeekDays.saturday
+            weekDays = WeekDays.SAT
         else:
-            weekDays = WeekDays.sunday
+            weekDays = WeekDays.SUN
         begin = time(hour=int(day['hours'].split('-')[0].split(':')[0]), minute=int(day['hours'].split('-')[0].split(':')[1]))
         end = time(hour=int(day['hours'].split('-')[1].split(':')[0]), minute=int(day['hours'].split('-')[1].split(':')[1]))
         WorkingHoursDB(
@@ -85,19 +85,19 @@ for office in offices:
     for day in office['openHours']:
         if not day['hours'] or day['hours'].lower() == 'выходной':
             continue
-        weekDays = WeekDays.monday
+        weekDays = WeekDays.MON
         if day['days'].lower() == 'вт':
-            weekDays = WeekDays.tuesday
+            weekDays = WeekDays.THU
         elif day['days'].lower() == 'ср':
-            weekDays = WeekDays.wednesday
+            weekDays = WeekDays.WED
         elif day['days'].lower() == 'чт':
-            weekDays = WeekDays.thursday
+            weekDays = WeekDays.THU
         elif day['days'].lower() == 'пт':
-            weekDays = WeekDays.friday
+            weekDays = WeekDays.FRI
         elif day['days'].lower() == 'сб':
-            weekDays = WeekDays.saturday
+            weekDays = WeekDays.SAT
         else:
-            weekDays = WeekDays.sunday
+            weekDays = WeekDays.SUN
         begin = time(hour=int(day['hours'].split('-')[0].split(':')[0]), minute=int(day['hours'].split('-')[0].split(':')[1]))
         end = time(hour=int(day['hours'].split('-')[1].split(':')[0]), minute=int(day['hours'].split('-')[1].split(':')[1]))
         WorkingHoursDB(

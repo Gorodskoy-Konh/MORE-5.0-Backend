@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 
-from app.api.endpoints import couriers, offices
+from app.api.endpoints import offices, products
 
 
 def get_limiter() -> Limiter:
@@ -20,4 +20,5 @@ def get_router() -> APIRouter:
     """
     router = APIRouter()
     router.include_router(offices.router)
+    router.include_router(products.router)
     return router

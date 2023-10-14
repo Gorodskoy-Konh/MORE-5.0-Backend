@@ -15,7 +15,7 @@ from typing import Annotated, Optional
 from fastapi import Depends, Path, Query
 
 from app.api.dependencies.database import get_repository
-from app.database.repositories.orders import OrdersRepository
+from app.database.repositories.tickets import OrdersRepository
 from app.schemas.models.common import int32, int64
 from app.schemas.models.orders import OrderDto
 from app.schemas.requests.orders import (

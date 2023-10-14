@@ -1,7 +1,7 @@
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter
 from starlette import status
 
-from app.database.models.order import OrderDB
+from app.database.models.tickets import TicketDB
 
 router = APIRouter(tags=[], prefix="/queues")
 
@@ -12,7 +12,7 @@ router = APIRouter(tags=[], prefix="/queues")
     operation_id="getQueues",
     status_code=status.HTTP_200_OK
 )
-async def get_queues(queues: list[OrderDB]):
+async def get_queues(queues: list[TicketDB]):
     return queues
 
 

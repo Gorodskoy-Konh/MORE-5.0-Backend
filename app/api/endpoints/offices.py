@@ -1,15 +1,13 @@
-from typing import Annotated
-
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends
 from starlette import status
+
+from app.api.dependencies.offices import get_offices_dependency, get_best_office_ids_dependency
+from app.schemas.models.offices import OfficeDto
+from app.schemas.responses.offices import GetOfficesResponse, GetBestOfficesResponse
 
 # from app.api.dependencies.couriers import (
 #     create_courier_dependency,
 # )
-
-from app.api.dependencies.offices import get_offices_dependency
-from app.schemas.models.offices import OfficeDto
-from app.schemas.responses.offices import GetOfficesResponse
 
 router = APIRouter(tags=["office-controller"], prefix="/offices")
 
@@ -36,3 +34,26 @@ async def add_couriers(
         # create_courier_dependency
 ):
     return GetOfficesResponse(offices=offices)
+
+
+@router.get(
+    "/best",
+    name="offices::get-best-offices",
+    operation_id="getBestOffices",
+    status_code=status.HTTP_200_OK,
+    response_model=GetBestOfficesResponse,
+    responses={
+        status.HTTP_200_OK: {
+            "model": GetBestOfficesResponse,
+            "description": "ok",
+        },
+        status.HTTP_400_BAD_REQUEST: {
+            "description": "bad request",
+        },
+    },
+    tags=["courier-controller"],
+)
+async def add_couriers(
+    offices: list[int] = Depends(get_best_office_ids_dependency)
+):
+    return GetBestOfficesResponse(offices=offices)
