@@ -11,3 +11,8 @@ class NotFoundInDBError(BaseDBError):
 class ConflictWithRequestDBError(BaseDBError):
     def __init__(self, message="Request data conflict with database"):
         super().__init__(message)
+
+
+class BadRequestError(BaseDBError):
+    def __init__(self, message="Request arguments are not valid"):
+        super().__init__(message)
