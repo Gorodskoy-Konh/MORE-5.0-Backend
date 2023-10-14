@@ -58,6 +58,8 @@ for office in offices:
 
     # Parsing of working hours
     for day in office['openHoursIndividuals']:
+        if day['hours'].lower() == 'выходной':
+            continue
         weekDays = WeekDays.monday
         if day['days'].lower() == 'вт':
             weekDays = WeekDays.tuesday
@@ -81,6 +83,8 @@ for office in offices:
             week_day=weekDays
         )
     for day in office['openHours']:
+        if day['hours'].lower() == 'выходной':
+            continue
         weekDays = WeekDays.monday
         if day['days'].lower() == 'вт':
             weekDays = WeekDays.tuesday
