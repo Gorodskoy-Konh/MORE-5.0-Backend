@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, TEXT
+from sqlalchemy import Column, ForeignKey, TEXT, BOOLEAN
 from sqlalchemy.dialects.postgresql import BIGINT
 
 from app.database.base import Base
@@ -18,3 +18,5 @@ class TerminalProductDB(Base):
         ForeignKey('product.name'),
         primary_key=True,
     )
+    individual = Column('individual', BOOLEAN)
+    legal = Column('legal', BOOLEAN)

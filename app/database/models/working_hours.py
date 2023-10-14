@@ -22,6 +22,6 @@ class WorkingHoursDB(Base):
     begin = Column("begin", TIME)
     end = Column("end", TIME)
     office_id = Column("office_id", BIGINT, ForeignKey('office.id'), primary_key=True)
-    individual = Column("individual_id", BOOLEAN, primary_key=True)
+    individual = Column("is_individual", BOOLEAN, primary_key=True)
     week_day = Column("week_day", Enum(WeekDays), primary_key=True)
     working_hours = relationship('OfficeDB', backref='working_hours')
