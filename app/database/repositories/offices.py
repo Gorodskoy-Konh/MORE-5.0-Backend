@@ -18,9 +18,6 @@ class OfficesRepository(BaseRepository):
     ) -> list[OfficeDto]:
         from sqlalchemy import select
         query = select(OfficeDB)
-        print(get_offices.city)
-        if get_offices.city:
-            query = query.where(eq(OfficeDB.address, get_offices.city))
 
         print(get_offices.latitude)
         result: Result = await self.connection.execute(
