@@ -5,7 +5,7 @@ from app.database.base import Base
 
 
 class TerminalProductDB(Base):
-    __tablename__ = "office_product"
+    __tablename__ = "termnial_product"
     terminal_id = Column(
         'terminal_id',
         BIGINT,
@@ -16,5 +16,5 @@ class TerminalProductDB(Base):
         'product_name',
         TEXT,
         ForeignKey('product.name'),
-        primary_key=True
+        primary_key=True,
     )

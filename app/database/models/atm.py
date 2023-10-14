@@ -13,4 +13,4 @@ class ATMDB(Base):
     latitude = Column("latitude", DOUBLE_PRECISION)
     longitude = Column("longitude", DOUBLE_PRECISION)
     all_day = Column("all_day", BOOLEAN)
-    conditions = relationship('ServiceDB', secondary=ATMConditionDB, backref='atms')
+    conditions = relationship('ConditionDB', secondary=ATMConditionDB, backref='atms')

@@ -3,7 +3,6 @@ from sqlalchemy.dialects.postgresql import BIGINT, TEXT, BOOLEAN, DOUBLE_PRECISI
 from sqlalchemy.orm import relationship
 
 from app.database.base import Base
-from app.database.models.office_product import OfficeProductDB
 
 
 class OfficeDB(Base):
@@ -19,4 +18,4 @@ class OfficeDB(Base):
     office_type = Column('office_type', BOOLEAN),
     suo_availability = Column('suo_availability', BOOLEAN),
     has_ramp = Column('has_ramp', BOOLEAN)
-    products = relationship('ProductDB', secondary=OfficeProductDB, backref='offices')
+    terminals = relationship('TerminalDB', backref='office')
