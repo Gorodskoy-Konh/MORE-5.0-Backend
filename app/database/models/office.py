@@ -8,13 +8,13 @@ from app.database.base import Base
 class OfficeDB(Base):
     __tablename__ = 'office'
     id = Column('id', BIGINT, primary_key=True, autoincrement=True)
-    name = Column('name', TEXT, unique=True)
+    name = Column('name', TEXT)
     address = Column('address', TEXT)
     latitude = Column('latitude', DOUBLE_PRECISION)
     longitude = Column('longitude', DOUBLE_PRECISION)
     sale_point_format = Column('sale_point_format', TEXT)
     rko = Column('rko', BOOLEAN)
-    kep = Column('kep', BOOLEAN)
+    kep = Column('kep', BOOLEAN, nullable=False)
     office_type = Column('office_type', BOOLEAN)
     suo_availability = Column('suo_availability', BOOLEAN)
     has_ramp = Column('has_ramp', BOOLEAN)
