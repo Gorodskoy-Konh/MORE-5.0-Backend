@@ -1,10 +1,11 @@
-from sqlalchemy import FLOAT, CheckConstraint, Column
+from sqlalchemy import FLOAT, CheckConstraint, Column, ForeignKey
 from sqlalchemy.dialects.postgresql import (
     ARRAY,
     BIGINT,
     CHAR,
     INTEGER,
     TIMESTAMP,
+    TEXT
 )
 from sqlalchemy.orm import relationship
 
@@ -14,27 +15,22 @@ from app.database.models.assignment_order import assignment_order_table
 
 class OrderDB(Base):
     __tablename__ = "order"
-    order_id = Column(
-        "order_id",
+    product_name = Column(
+        "product_name",
         BIGINT,
         primary_key=True,
-        unique=True,
-        autoincrement=True,
-        index=True,
+        ForeignKey("product_name")
     )
-    weight = Column("weight", FLOAT, CheckConstraint("weight>=0"))
-    delivery_hours = Column("delivery_hours", ARRAY(CHAR(11)))
-    regions = Column("regions", INTEGER, CheckConstraint("regions>0"))
-    cost = Column("cost", INTEGER, CheckConstraint("cost>0"))
-    complete_time = Column(
-        "complete_time", TIMESTAMP(timezone=True), nullable=True
+    office_id = Column(
+        "office_id",
+        BIGINT,
+        primary_key=True,
+        ForeignKey("office.id")
     )
-    courier_id = Column("courier_id", BIGINT, nullable=True, default=None)
-    group_order_id = Column(
-        "group_order_id", BIGINT, nullable=True, default=None, index=True
+    user_id = Column(
+        "user_id",
+        BIGINT,
+        primary_key=True,
+        autoincrement=True
     )
-    assignments = relationship(
-        "AssignmentDB",
-        secondary=assignment_order_table,
-        back_populates="orders",
-    )
+
