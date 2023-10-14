@@ -1,8 +1,9 @@
-from sqlalchemy import Column, ForeignKey, Table
-from sqlalchemy.dialects.postgresql import BIGINT, TEXT, BOOLEAN
+from sqlalchemy import Column
+from sqlalchemy.dialects.postgresql import TEXT
 
 from app.database.base import Base
 
-product_table = Table('product',
-                      Base.metadata,
-                      Column('name', TEXT, primary_key=True))
+
+class ProductDB(Base):
+    __tablename__ = 'product'
+    name = Column('name', TEXT, primary_key=True)

@@ -4,24 +4,17 @@ from sqlalchemy.dialects.postgresql import BIGINT
 from app.database.base import Base
 
 
-class OfficeProductTable(Base):
-    __tablename__ = "assignment"
-    office_id = Column(
-        'office_id',
+class TerminalProductDB(Base):
+    __tablename__ = "office_product"
+    terminal_id = Column(
+        'terminal_id',
         BIGINT,
-        ForeignKey('office.id'),
+        ForeignKey('terminal.id'),
         primary_key=True
     )
-    name = Column(
-        'name',
+    product_name = Column(
+        'product_name',
         TEXT,
-        ForeignKey('product.name')
+        ForeignKey('product.name'),
+        primary_key=True
     )
-    # assignment_id = Column(
-    #     "assignment_id",
-    #     BIGINT,
-    #     primary_key=True,
-    #     nullable=False,
-    #     autoincrement=True,
-    #     index=True,
-    # )

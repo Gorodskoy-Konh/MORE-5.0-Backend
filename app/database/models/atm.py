@@ -1,14 +1,16 @@
-from sqlalchemy import Column, ForeignKey, Table
+from sqlalchemy import Column
 from sqlalchemy.dialects.postgresql import BIGINT, TEXT, BOOLEAN, DOUBLE_PRECISION
+from sqlalchemy.orm import relationship
 
 from app.database.base import Base
+from app.database.models.atm_service import ATMConditionDB
 
-atm_order_table = Table(
-    "atm",
-    Base.metadata,
-    Column("id", BIGINT, primary_key=True),
-    Column("address", TEXT),
-    Column("latitude", DOUBLE_PRECISION),
-    Column("longitude", DOUBLE_PRECISION),
-    Column("allDay", BOOLEAN),
-)
+
+class ATMDB(Base):
+    __tablename__ = "atm"
+    id = Column("id", BIGINT, primary_key=True)
+    address = Column("address", TEXT)
+    latitude = Column("latitude", DOUBLE_PRECISION)
+    longitude = Column("longitude", DOUBLE_PRECISION)
+    all_day = Column("all_day", BOOLEAN)
+    conditions = relationship('ServiceDB', secondary=ATMConditionDB, backref='atms')
