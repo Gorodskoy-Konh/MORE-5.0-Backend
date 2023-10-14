@@ -1,5 +1,3 @@
-from typing import Optional
-
 from pydantic import BaseModel, confloat
 
 
@@ -9,3 +7,5 @@ class ATMDto(BaseModel):
     latitude: float
     longitude: float
     all_day: bool
+
+    conditions: [str]
