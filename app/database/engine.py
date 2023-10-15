@@ -23,6 +23,7 @@ from app.database.models.terminal import TerminalDB
 from app.database.models.terminal_product import TerminalProductDB
 from app.database.models.office import OfficeDB
 from app.database.models.product import ProductDB
+from app.database.models.tickets import TicketDB
 
 
 class DatabaseEngine:

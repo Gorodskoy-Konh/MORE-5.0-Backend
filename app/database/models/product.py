@@ -9,4 +9,4 @@ from app.database.models.terminal_product import TerminalProductDB
 class ProductDB(Base):
     __tablename__ = 'product'
     name = Column('name', TEXT, primary_key=True)
-    # products = relationship('TerminalDB', secondary=TerminalProductDB, backref='terminal')
+    terminals = relationship('TerminalDB', secondary=TerminalProductDB.__table__, backref='products')
