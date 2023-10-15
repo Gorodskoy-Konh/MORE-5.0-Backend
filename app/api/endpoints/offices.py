@@ -56,4 +56,4 @@ async def add_couriers(
 async def add_couriers(
     offices: list[int] = Depends(get_best_office_ids_dependency)
 ):
-    return GetBestOfficesResponse(offices=offices)
+    return GetBestOfficesResponse(best_time=offices[0], closest=offices[1])

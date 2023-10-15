@@ -18,4 +18,4 @@ class OfficeDB(Base):
     office_type = Column('office_type', BOOLEAN)
     suo_availability = Column('suo_availability', BOOLEAN)
     has_ramp = Column('has_ramp', BOOLEAN)
-    terminals = relationship('TerminalDB', backref='office')
+    terminals = relationship('TerminalDB', backref='office', lazy='selectin')

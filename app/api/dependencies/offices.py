@@ -24,4 +24,4 @@ async def get_best_office_ids_dependency(
             get_repository(OfficesRepository)
         ),
 ) -> list[int]:
-    return await offices_repo.get_offices(get_offices=get_best_offices_request)
+    return await offices_repo.get_best_offices(get_best_offices=get_best_offices_request)

@@ -9,4 +9,4 @@ class GetOfficesResponse(BaseModel):
 
 class GetBestOfficesResponse(BaseModel):
     best_time: int
-    closest: int
+    closest: float
